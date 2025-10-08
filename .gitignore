@@ -1,0 +1,60 @@
+# Systémové soubory
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# Editor a IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.project
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Node modules (pokud používáš npm/yarn)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build a distribution složky
+dist/
+build/
+out/
+
+# Dočasné soubory
+tmp/
+temp/
+*.tmp
+
+# Environment proměnné
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cache složky
+.cache/
+.parcel-cache/
+
+# Minified files (pokud je generuješ)
+*.min.js
+*.min.css
+
+# Backup soubory
+*.bak
+*.backup
