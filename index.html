@@ -120,6 +120,22 @@
             animation-delay: 3s;
         }
 
+        /* Optimalizace pro mobily - snížení animací */
+        @media (max-width: 768px) {
+            .floating-particles::before,
+            .floating-particles::after {
+                display: none; /* Skrytí částic na mobilu pro lepší performance */
+            }
+            
+            .magic-sparkle::before {
+                animation-duration: 12s; /* Zpomalení animací na mobilu */
+            }
+            
+            .magic-pulse {
+                animation-duration: 3s; /* Zpomalení pulzování */
+            }
+        }
+
         @keyframes floatParticles {
             0%, 100% { 
                 transform: translateY(0px) scale(1);
@@ -221,71 +237,83 @@
                     <a class="bg-primary text-background-dark font-bold py-2 px-4 rounded-full hover:bg-opacity-90 transition-all glow-effect-hover"
                         href="#contact">Kontaktovat</a>
                 </nav>
-                <button class="md:hidden text-text-light">
-                    <span class="material-icons">menu</span>
+                <button class="md:hidden text-text-light p-2" id="mobile-menu-btn">
+                    <span class="material-icons text-2xl">menu</span>
                 </button>
             </div>
+            <!-- Mobile Menu -->
+            <div class="md:hidden bg-background-dark/95 backdrop-blur-sm border-t border-gray-800 hidden" id="mobile-menu">
+                <div class="px-6 py-4 space-y-4">
+                    <a class="block text-text-light hover:text-primary transition-colors py-2" href="#features">Funkce</a>
+                    <a class="block text-text-light hover:text-primary transition-colors py-2" href="#references">Reference</a>
+                    <a class="block text-text-light hover:text-primary transition-colors py-2" href="#contact">Kontakt</a>
+                    <a class="block bg-primary text-background-dark font-bold py-3 px-6 rounded-full text-center hover:bg-opacity-90 transition-all"
+                        href="#contact">Kontaktovat</a>
+                </div>
+            </div>
         </header>
-        <section class="min-h-screen flex items-center justify-center relative text-center px-6 pt-24 pb-12 fade-in overflow-hidden"
+        <section class="min-h-screen flex items-center justify-center relative text-center px-4 sm:px-6 pt-20 sm:pt-24 pb-12 fade-in overflow-hidden"
             id="hero">
             <div class="absolute inset-0 bg-gradient-to-b from-background-dark via-background-dark/50 to-background-dark z-10">
             </div>
             <video class="absolute inset-0 w-full h-full object-cover opacity-30" autoplay muted loop playsinline>
                 <source src="assets/video/background-video-optimalizet.mp4" type="video/mp4">
             </video>
-            <div class="relative z-10">
-                <h1 class="font-display text-5xl md:text-7xl font-bold mb-4">Kouzlo přesného hledání pro váš e-shop.
+            <div class="relative z-10 w-full max-w-6xl mx-auto">
+                <h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 px-2 leading-tight">Kouzlo přesného hledání pro váš e-shop.
                 </h1>
-                <h2 class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">Revelor rozumí vašim zákazníkům
+                <h2 class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto px-2">Revelor rozumí vašim zákazníkům
                     dřív, než dopíšou svůj dotaz.</h2>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a class="bg-primary text-background-dark font-bold py-3 px-8 rounded-full text-lg transition-all glow-effect-hover magic-glow flex items-center space-x-2 relative"
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
+                    <a class="bg-primary text-background-dark font-bold py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg transition-all glow-effect-hover magic-glow flex items-center space-x-2 relative w-full sm:w-auto justify-center"
                         href="#contact">
                         <span class="material-icons">auto_awesome</span>
                         <span>Začít s Revelorem</span>
                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-pulse"></div>
                     </a>
                 </div>
-                <div class="mt-12 max-w-md mx-auto">
-                    <div class="bg-card-dark border border-primary/30 rounded-full p-4 relative overflow-hidden">
-                        <input type="text" id="demo-search" class="bg-transparent w-full text-white placeholder-gray-400 focus:outline-none" placeholder="vitamíny pro spánek..." readonly>
-                        <span class="material-icons text-primary absolute right-4 top-1/2 transform -translate-y-1/2">search</span>
+                <div class="mt-8 sm:mt-12 max-w-sm sm:max-w-md mx-auto px-4">
+                    <div class="bg-card-dark rounded-full p-3 sm:p-4 relative overflow-hidden">
+                        <input type="text" id="demo-search" class="bg-transparent w-full text-white placeholder-gray-400 focus:outline-none text-sm sm:text-base" placeholder="vitamíny pro spánek..." readonly>
+                        <div class="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 border border-primary/30 rounded-full flex items-center justify-center">
+                            <span class="material-icons text-primary text-lg">search</span>
+                        </div>
                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent animate-pulse"></div>
                     </div>
-                    <p class="mt-4 text-gray-400 text-sm">AI poháněné vyhledávání, které zvyšuje konverze až o 30 %.</p>
+                    <p class="mt-3 sm:mt-4 text-gray-400 text-xs sm:text-sm px-2">AI poháněné vyhledávání, které zvyšuje konverze až o 30 %.</p>
                 </div>
             </div>
         </section>
-        <section class="py-20 px-6 bg-background-dark" id="how-it-works">
+        <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-background-dark" id="how-it-works">
             <div class="container mx-auto text-center">
-                <h2 class="text-4xl font-display font-bold mb-12">Jak Revelor funguje</h2>
-                <div class="grid md:grid-cols-3 gap-10">
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-display font-bold mb-8 sm:mb-12 px-2">Jak Revelor funguje</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
                     <div
-                        class="bg-card-dark p-8 rounded-xl border border-primary/20 hover:border-primary/50 transition-all transform hover:-translate-y-2">
-                        <div class="text-primary text-5xl mb-4 flex justify-center">
+                        class="bg-card-dark p-6 sm:p-8 rounded-xl border border-primary/20 hover:border-primary/50 transition-all transform hover:-translate-y-2">
+                        <div class="text-primary text-4xl sm:text-5xl mb-4 flex justify-center">
                             <div class="relative">
-                                <div class="w-12 h-12 border-2 border-primary rounded-full flex items-center justify-center">
-                                    <div class="w-6 h-6 bg-primary rounded-full"></div>
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 border-2 border-primary rounded-full flex items-center justify-center">
+                                    <div class="w-5 h-5 sm:w-6 sm:h-6 bg-primary rounded-full"></div>
                                 </div>
                                 <div class="absolute inset-0 border-2 border-primary/30 rounded-full animate-ping"></div>
                             </div>
                         </div>
-                        <h3 class="text-2xl font-bold mb-3">Porozumí dotazu</h3>
-                        <p class="text-gray-400">AI rozpozná význam, ne jen klíčová slova.</p>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3">Porozumí dotazu</h3>
+                        <p class="text-gray-400 text-sm sm:text-base">AI rozpozná význam, ne jen klíčová slova.</p>
                     </div>
                     <div
-                        class="bg-card-dark p-8 rounded-xl border border-primary/20 hover:border-primary/50 transition-all transform hover:-translate-y-2">
-                        <div class="text-primary text-5xl mb-4 flex justify-center"><span
+                        class="bg-card-dark p-6 sm:p-8 rounded-xl border border-primary/20 hover:border-primary/50 transition-all transform hover:-translate-y-2">
+                        <div class="text-primary text-4xl sm:text-5xl mb-4 flex justify-center"><span
                                 class="material-icons">explore</span></div>
-                        <h3 class="text-2xl font-bold mb-3">Navede správně</h3>
-                        <p class="text-gray-400">Využívá kontext, historii a popularitu produktů.</p>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3">Navede správně</h3>
+                        <p class="text-gray-400 text-sm sm:text-base">Využívá kontext, historii a popularitu produktů.</p>
                     </div>
                     <div
-                        class="bg-card-dark p-8 rounded-xl border border-primary/20 hover:border-primary/50 transition-all transform hover:-translate-y-2">
-                        <div class="text-primary text-5xl mb-4 flex justify-center"><span
+                        class="bg-card-dark p-6 sm:p-8 rounded-xl border border-primary/20 hover:border-primary/50 transition-all transform hover:-translate-y-2 sm:col-span-2 lg:col-span-1">
+                        <div class="text-primary text-4xl sm:text-5xl mb-4 flex justify-center"><span
                                 class="material-icons">tune</span></div>
-                        <h3 class="text-2xl font-bold mb-3">Přizpůsobí se vám</h3>
-                        <p class="text-gray-400">Vyladíte výsledky podle značky, priorit a sezóny.</p>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3">Přizpůsobí se vám</h3>
+                        <p class="text-gray-400 text-sm sm:text-base">Vyladíte výsledky podle značky, priorit a sezóny.</p>
                     </div>
                 </div>
                 <div class="mt-12">
@@ -294,53 +322,70 @@
                 </div>
             </div>
         </section>
-        <section class="py-20 px-6" id="results">
+        <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6" id="results">
             <div class="container mx-auto">
-                <h2 class="text-4xl font-display font-bold mb-12 text-center">Reálné výsledky, které mluví za vše</h2>
-                <div
-                    class="bg-card-dark rounded-xl p-8 border border-accent-gold/20 shadow-lg shadow-accent-gold/5 overflow-hidden">
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left">
-                            <thead class="border-b border-gray-700">
-                                <tr>
-                                    <th class="py-4 px-6 text-gray-400 font-semibold">Metrika</th>
-                                    <th class="py-4 px-6 text-gray-400 font-semibold text-center">Před Revelorem</th>
-                                    <th class="py-4 px-6 text-primary font-semibold text-center">Po nasazení</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b border-gray-800">
-                                    <td class="py-5 px-6 font-medium">Konverzní poměr z vyhledávání</td>
-                                    <td class="py-5 px-6 text-center text-gray-300">3,1 %</td>
-                                    <td class="py-5 px-6 text-center text-primary font-bold text-lg">4,8 % <span
-                                            class="text-sm font-normal text-accent-gold">(+55 %)</span></td>
-                                </tr>
-                                <tr class="border-b border-gray-800">
-                                    <td class="py-5 px-6 font-medium">Doba nalezení produktu</td>
-                                    <td class="py-5 px-6 text-center text-gray-300">8 s</td>
-                                    <td class="py-5 px-6 text-center text-primary font-bold text-lg">&lt; 2 s</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-5 px-6 font-medium">Chybné dotazy (0 results)</td>
-                                    <td class="py-5 px-6 text-center text-gray-300">14 %</td>
-                                    <td class="py-5 px-6 text-center text-primary font-bold text-lg">2 %</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-display font-bold mb-8 sm:mb-12 text-center px-2">Reálné výsledky, které mluví za vše</h2>
+                <div class="max-w-2xl mx-auto space-y-4 px-4">
+                    <!-- Konverzní poměr -->
+                    <div class="bg-card-dark rounded-xl p-6 border border-accent-gold/20 shadow-lg shadow-accent-gold/5">
+                        <div class="text-center">
+                            <h3 class="text-lg font-semibold text-white mb-4">Konverzní poměr z vyhledávání</h3>
+                            <div class="space-y-2 mb-4">
+                                <div class="text-gray-300">Před: <span class="font-semibold">3,1 %</span></div>
+                                <div class="text-primary font-bold text-lg">Po: <span class="text-accent-gold">4,8 % (+55%)</span></div>
+                            </div>
+                            <div class="flex justify-center">
+                                <div class="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent-gold/20 rounded-full flex items-center justify-center">
+                                    <span class="text-2xl font-bold text-primary">+55%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Doba nalezení -->
+                    <div class="bg-card-dark rounded-xl p-6 border border-accent-gold/20 shadow-lg shadow-accent-gold/5">
+                        <div class="text-center">
+                            <h3 class="text-lg font-semibold text-white mb-4">Doba nalezení produktu</h3>
+                            <div class="space-y-2 mb-4">
+                                <div class="text-gray-300">Před: <span class="font-semibold">8 s</span></div>
+                                <div class="text-primary font-bold text-lg">Po: <span class="text-accent-gold">&lt; 2 s</span></div>
+                            </div>
+                            <div class="flex justify-center">
+                                <div class="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent-gold/20 rounded-full flex items-center justify-center">
+                                    <span class="text-2xl font-bold text-primary">-75%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chybné dotazy -->
+                    <div class="bg-card-dark rounded-xl p-6 border border-accent-gold/20 shadow-lg shadow-accent-gold/5">
+                        <div class="text-center">
+                            <h3 class="text-lg font-semibold text-white mb-4">Chybné dotazy (0 results)</h3>
+                            <div class="space-y-2 mb-4">
+                                <div class="text-gray-300">Před: <span class="font-semibold">14 %</span></div>
+                                <div class="text-primary font-bold text-lg">Po: <span class="text-accent-gold">2 %</span></div>
+                            </div>
+                            <div class="flex justify-center">
+                                <div class="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent-gold/20 rounded-full flex items-center justify-center">
+                                    <span class="text-2xl font-bold text-primary">-85%</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="text-center mt-12">
-                    <a class="bg-accent-gold text-background-dark font-bold py-3 px-6 rounded-full hover:opacity-90 transition-opacity"
+                <div class="text-center mt-8 sm:mt-12">
+                    <a class="bg-accent-gold text-background-dark font-bold py-3 px-4 sm:px-6 rounded-full hover:opacity-90 transition-opacity inline-block text-sm sm:text-base text-center max-w-sm sm:max-w-none mx-auto"
                         href="#contact">Zeptejte se, jak by Revelor zlepšil váš e-shop</a>
                 </div>
             </div>
         </section>
-        <section class="py-20 px-6 bg-background-dark/50" id="features">
+        <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-background-dark/50" id="features">
             <div class="container mx-auto">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
                     <div class="magic-reveal">
                         <h3 class="font-display text-3xl font-bold text-primary mb-4">Inteligentní vyhledávání</h3>
-                        <h4 class="text-xl text-gray-300 mb-6">Pokročilé funkce pro lepší výsledky.</h4>
+                        <h4 class="text-xl text-gray-300 mb-6">Navržené přímo pro Shoptet Premium a jeho specifické potřeby.</h4>
                         <ul class="space-y-3 list-disc list-inside text-gray-400">
                             <li class="magic-reveal" style="animation-delay: 0.1s;">Inteligentní zpracování překlepů</li>
                             <li class="magic-reveal" style="animation-delay: 0.2s;">Prioritizace produktů podle popularity</li>
@@ -349,18 +394,18 @@
                         </ul>
                     </div>
                     <div class="magic-reveal floating-particles">
-                        <img alt="Demo ukázka hledání v Reveloru" class="rounded-lg shadow-2xl shadow-primary/10 magic-sparkle"
+                        <img alt="Demo ukázka hledání v Reveloru" class="rounded-lg shadow-2xl shadow-primary/10 magic-sparkle w-full h-auto"
                             src="assets/images/demo-hledani.png" />
                     </div>
                 </div>
-                <div class="grid lg:grid-cols-2 gap-16 items-center mt-24">
+                <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center mt-16 sm:mt-20 lg:mt-24">
                     <div class="order-2 lg:order-1 magic-reveal floating-particles">
-                        <img alt="Demo ukázka Revelor Dashboard administrace" class="rounded-lg shadow-2xl shadow-primary/10 magic-sparkle"
+                        <img alt="Demo ukázka Revelor Dashboard administrace" class="rounded-lg shadow-2xl shadow-primary/10 magic-sparkle w-full h-auto"
                             src="assets/images/demo-dashboard.png" />
                     </div>
                     <div class="order-1 lg:order-2 magic-reveal">
                         <h3 class="font-display text-3xl font-bold text-primary mb-4">Dashboard</h3>
-                        <h4 class="text-xl text-gray-300 mb-6">Mágovská kniha, ve které ovládáte výsledky.</h4>
+                        <h4 class="text-xl text-gray-300 mb-6">Přizpůsobený pro Shoptet Premium workflow a metriky.</h4>
                         <ul class="space-y-3 list-disc list-inside text-gray-400">
                             <li class="magic-reveal" style="animation-delay: 0.1s;">Úprava relevance, boosting, merchandising</li>
                             <li class="magic-reveal" style="animation-delay: 0.2s;">Přehledné grafy nejčastějších dotazů</li>
@@ -370,7 +415,7 @@
                 </div>
                 <div class="text-center mt-24 magic-reveal">
                     <h3 class="font-display text-3xl font-bold text-primary mb-4">Integrace</h3>
-                    <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Napojení na Shoptet Premium přes API během několika dní.</p>
+                    <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Jediné řešení navržené přímo pro Shoptet Premium. Vytvořené odborníky, kteří znají platformu zevnitř.</p>
                     <div class="flex justify-center items-center magic-reveal floating-particles">
                         <img src="assets/images/shoptet-premium.svg" alt="Shoptet Premium" class="h-16 w-auto opacity-80 hover:opacity-100 transition-opacity magic-sparkle">
                     </div>
@@ -405,14 +450,14 @@
                 </div>
             </div>
         </section>
-        <section class="py-20 px-6 bg-background-dark/30" id="pricing">
+        <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-background-dark/30" id="pricing">
             <div class="container mx-auto text-center">
-                <h2 class="text-4xl font-display font-bold mb-4">Začněte s kouzlem hledání</h2>
-                <p class="text-lg text-gray-400 mb-12">Profesionální AI vyhledávání pro váš e-shop</p>
-                <div class="max-w-2xl mx-auto magic-reveal">
-                    <div class="bg-card-dark p-12 rounded-xl border border-primary/50 hover:border-primary transition-all relative magic-pulse floating-particles">
-                        <h3 class="text-3xl font-bold mb-6 text-primary">Revelor Premium</h3>
-                        <div class="text-5xl font-bold text-primary mb-6">od 4 900 Kč<span class="text-lg text-gray-400 font-normal">/měsíc bez DPH</span></div>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-display font-bold mb-4 px-2">Začněte s kouzlem hledání</h2>
+                <p class="text-base sm:text-lg text-gray-400 mb-8 sm:mb-12 px-2">Profesionální AI vyhledávání pro váš e-shop</p>
+                <div class="max-w-2xl mx-auto magic-reveal px-4">
+                    <div class="bg-card-dark p-6 sm:p-8 lg:p-12 rounded-xl border border-primary/50 hover:border-primary transition-all relative magic-pulse floating-particles">
+                        <h3 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-primary">Revelor Premium</h3>
+                        <div class="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary mb-4 sm:mb-6">od 4 900 Kč<span class="text-base sm:text-lg text-gray-400 font-normal block sm:inline">/měsíc bez DPH</span></div>
                         <ul class="text-left space-y-3 text-gray-300 mb-10 max-w-md mx-auto">
                             <li class="flex items-center magic-reveal" style="animation-delay: 0.1s;"><span class="text-primary mr-3">✓</span> Neomezené produkty</li>
                             <li class="flex items-center magic-reveal" style="animation-delay: 0.2s;"><span class="text-primary mr-3">✓</span> Pokročilé AI vyhledávání</li>
@@ -421,7 +466,7 @@
                             <li class="flex items-center magic-reveal" style="animation-delay: 0.5s;"><span class="text-primary mr-3">✓</span> Priority podpora</li>
                             <li class="flex items-center magic-reveal" style="animation-delay: 0.6s;"><span class="text-primary mr-3">✓</span> Custom konfigurace</li>
                         </ul>
-                        <a href="#contact" class="bg-primary text-background-dark font-bold py-4 px-12 rounded-full hover:bg-opacity-90 transition-all inline-block text-lg magic-glow">Začít s Revelorem</a>
+                        <a href="#contact" class="bg-primary text-background-dark font-bold py-3 sm:py-4 px-8 sm:px-12 rounded-full hover:bg-opacity-90 transition-all inline-block text-base sm:text-lg magic-glow w-full sm:w-auto">Začít s Revelorem</a>
                     </div>
                 </div>
                 <p class="mt-8 text-gray-400">14denní bezplatná zkušební verze bez závazků</p>
@@ -493,7 +538,7 @@
                     </div>
                     <div class="bg-card-dark p-6 rounded-xl border border-gray-800">
                         <h3 class="text-xl font-bold mb-3 text-primary">Jaké e-shopové platformy podporujete?</h3>
-                        <p class="text-gray-400">Revelor funguje s Shoptet, WooCommerce, Prestashop a přes API s jakýmkoliv vlastním řešením.</p>
+                        <p class="text-gray-400">Revelor je jediné řešení vytvořené přímo pro Shoptet Premium. Díky hluboké znalosti platformy dokážeme plně vytěžit její potenciál a známe specifické potřeby Shoptet Premium klientů.</p>
                     </div>
                     <div class="bg-card-dark p-6 rounded-xl border border-gray-800">
                         <h3 class="text-xl font-bold mb-3 text-primary">Potřebuji technické znalosti pro používání?</h3>
@@ -502,32 +547,32 @@
                 </div>
             </div>
         </section>
-        <section class="py-20 px-6 bg-primary text-background-dark" id="contact">
+        <section class="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-primary text-background-dark" id="contact">
             <div class="container mx-auto text-center">
-                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">Zažijte kouzlo hledání naživo.</h2>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                    <a class="bg-background-dark text-text-light font-bold py-3 px-8 rounded-full text-lg transition-all hover:bg-opacity-90 flex items-center space-x-2"
+                <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 px-2 leading-tight">Zažijte kouzlo hledání naživo.</h2>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6 sm:mb-8 max-w-2xl mx-auto">
+                    <a class="bg-background-dark text-text-light font-bold py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg transition-all hover:bg-opacity-90 flex items-center space-x-2 w-full sm:w-auto justify-center"
                         href="#contact">
                         <span class="material-icons">auto_awesome</span>
                         <span>Začít s Revelorem</span>
                     </a>
-                    <a class="bg-transparent border-2 border-background-dark text-background-dark font-bold py-3 px-8 rounded-full text-lg transition-all hover:bg-background-dark hover:text-text-light flex items-center space-x-2"
+                    <a class="bg-transparent border-2 border-background-dark text-background-dark font-bold py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg transition-all hover:bg-background-dark hover:text-text-light flex items-center space-x-2 w-full sm:w-auto justify-center"
                         href="mailto:jsme@webotvurci.cz">
                         <span class="material-icons">email</span>
                         <span>Napsat obchodníkovi</span>
                     </a>
                 </div>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-8 text-background-dark">
-                    <a href="tel:+420728089029" class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 text-background-dark">
+                    <a href="tel:+420728089029" class="flex items-center space-x-2 hover:opacity-80 transition-opacity text-sm sm:text-base">
                         <span class="material-icons">phone</span>
                         <span class="font-semibold">+420 728 089 029</span>
                     </a>
-                    <a href="mailto:jsme@webotvurci.cz" class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+                    <a href="mailto:jsme@webotvurci.cz" class="flex items-center space-x-2 hover:opacity-80 transition-opacity text-sm sm:text-base">
                         <span class="material-icons">email</span>
                         <span class="font-semibold">jsme@webotvurci.cz</span>
                     </a>
                 </div>
-                <p class="mt-8 opacity-80">Důvěřují nám desítky e-shopů napříč různými odvětvími.</p>
+                <p class="mt-6 sm:mt-8 opacity-80 text-sm sm:text-base px-2">Důvěřují nám desítky e-shopů napříč různými odvětvími.</p>
             </div>
         </section>
         <footer class="bg-background-dark py-12 px-6">
@@ -538,7 +583,7 @@
                 </div>
                 <p class="mb-6 italic">"Odhalujeme smysl v datech."</p>
                 <p class="text-sm">© 2025 Revelor. Všechna práva vyhrazena.</p>
-                <p class="text-sm mt-2">vytvořili <a href="https://www.webotvurci.cz/sluzby/shoptet/shoptet-premium-e-shop-bez-limitu/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">webotvůrci</a></p>
+                <p class="text-sm mt-2">Vytvořili <a href="https://www.webotvurci.cz/sluzby/shoptet/shoptet-premium-e-shop-bez-limitu/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">webotvůrci</a></p>
             </div>
         </footer>
     </div>
@@ -587,6 +632,30 @@
         window.addEventListener('load', () => {
             setTimeout(typeSearchQuery, 1000);
         });
+        
+        // Mobilní menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuBtn.querySelector('.material-icons');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.textContent = 'menu';
+                } else {
+                    icon.textContent = 'close';
+                }
+            });
+            
+            // Zavřít menu při kliknutí na link
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.querySelector('.material-icons').textContent = 'menu';
+                });
+            });
+        }
         
         // Scroll animace pro odhalování sekcí
         const observerOptions = {
